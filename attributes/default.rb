@@ -1,4 +1,4 @@
-default['cookbook_youtrack']['youtrack']['version'] = '5.2.5-8823'
+default['cookbook_youtrack']['youtrack']['version'] = '6.0.12223'
 default['cookbook_youtrack']['youtrack']['address'] = 'localhost'
 default['cookbook_youtrack']['youtrack']['install_dir'] = '/opt/youtrack'
 default['cookbook_youtrack']['youtrack']['download_url'] = 'http://download.jetbrains.com/charisma/'
