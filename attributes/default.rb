@@ -1,3 +1,5 @@
+default['java']['jdk_version'] = '7'
+
 default['cookbook_youtrack']['youtrack']['version'] = '6.0.12223'
 default['cookbook_youtrack']['youtrack']['address'] = 'localhost'
 default['cookbook_youtrack']['youtrack']['install_dir'] = '/opt/youtrack'
