@@ -2,7 +2,6 @@
 # vi: set ft=ruby :
 
 require 'json'
-require 'berkshelf/vagrant'
 
 chef_configuration = JSON.parse(Pathname(__FILE__).dirname.join('.', 'chef.json').read)
 
