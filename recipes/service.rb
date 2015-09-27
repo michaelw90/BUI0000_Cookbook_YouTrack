@@ -3,28 +3,30 @@
 # Recipe:: service
 #
 
-# Retrieve the useful variables for the recipe
-apps_directory = node['appbox']['apps_dir']
-install_dir = node['cookbook_youtrack']['youtrack']['install_dir']
-shell_script_path = "#{install_dir}/youtrack.sh"
+# Decipher the locations
+archive_directory = Chef::Config[:file_cache_path]
+youtrack_version = node['cookbook_youtrack']['youtrack']['version']
+install_root_dir = node['cookbook_youtrack']['youtrack']['install_root_dir']
+data_directory = node['cookbook_youtrack']['youtrack']['data_dir']
+backup_directory = node['cookbook_youtrack']['youtrack']['backup_dir']
+memory_options = node['cookbook_youtrack']['youtrack']['memory_options']
 
-# Create the service
-service 'youtrack' do
-  supports :restart => true, :start => true, :stop => true, :reload => true
-  action :nothing
+# Calculate some variables
+install_dir = "#{install_root_dir}/#{youtrack_version}"
+shell_script_path = "#{install_dir}/bin/youtrack.sh"
+
+# Create youtrack Service
+template '/etc/init/youtrack.conf' do
+  source 'youtrack.conf.erb'
+  variables(
+    :memory_options => memory_options,
+    :shell_script_path => shell_script_path
+  )
+  notifies :start, 'service[youtrack]', :immediately
 end
 
-# Create the service template and notify the start of the service
-template 'youtrack' do
-  path '/etc/init.d/youtrack'
-  source 'youtrack.erb'
-  variables(
-      :home_directory => apps_directory,
-      :shell_script_path => shell_script_path
-  )
-  owner 'root'
-  group 'root'
-  mode '0755'
-  notifies :enable, 'service[youtrack]'
-  notifies :restart, 'service[youtrack]'
+# Start youtrack Service
+service "youtrack" do
+  provider Chef::Provider::Service::Upstart
+  action :restart
 end

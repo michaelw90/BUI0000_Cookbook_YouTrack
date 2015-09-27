@@ -4,7 +4,7 @@ maintainer_email 'fred.thompson@buildempire.co.uk'
 license          'Apache 2.0'
 description      'TeamCity and YouTrack on one server.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.5'
+version          '0.1.6'
 
 recipe 'cookbook_youtrack', 'YouTrack instance.'
 
@@ -12,6 +12,6 @@ recipe 'cookbook_youtrack', 'YouTrack instance.'
   supports os
 end
 
-%w{build-essential appbox java nginx}.each do |cb|
+%w{build-essential java}.each do |cb|
   depends cb
 end
