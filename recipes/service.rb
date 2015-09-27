@@ -13,7 +13,7 @@ memory_options = node['cookbook_youtrack']['youtrack']['memory_options']
 
 # Calculate some variables
 install_dir = "#{install_root_dir}/#{youtrack_version}"
-shell_script_path = "#{install_dir}/youtrack/bin/youtrack.sh"
+shell_script_path = "#{install_dir}/bin/youtrack.sh"
 
 # Create youtrack Service
 template '/etc/init/youtrack.conf' do
