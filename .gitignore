@@ -2,4 +2,3 @@
 Berksfile.lock
 Gemfile.lock
 /.idea
-/.idea/*
