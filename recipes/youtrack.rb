@@ -28,17 +28,6 @@ directory install_root_dir do
   action :create
 end
 
-# Create the youtrack version directory
-directory install_dir do
-  recursive true
-  action :create
-end
-
-# Set the symbolic link to the current installation
-link current_dir do
-  to install_dir
-end
-
 # Create the data directory
 directory data_directory do
   recursive true
@@ -62,7 +51,13 @@ end
 # Run the commands to extract and move youtrack into place.
 bash "extract-youtrack" do
   code <<-EOH
-    unzip #{youtrack_archive_path} -d #{install_dir}
+    unzip #{youtrack_archive_path} -d #{install_root_dir}
   EOH
   action :nothing
+end
+
+
+# Set the symbolic link to the new installation
+link current_dir do
+  to install_dir
 end
