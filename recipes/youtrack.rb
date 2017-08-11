@@ -12,7 +12,7 @@ backup_directory = node['cookbook_youtrack']['youtrack']['backup_dir']
 download_url = node['cookbook_youtrack']['youtrack']['download_url']
 
 # Calculate some variables
-youtrack_archive_name = "youtrack-#{youtrack_version}.zip"
+youtrack_archive_name = "#{youtrack_version}.zip"
 youtrack_archive_path = "#{archive_directory}/#{youtrack_archive_name}"
 install_dir = "#{install_root_dir}/#{youtrack_version}"
 current_dir = "#{install_root_dir}/current"
