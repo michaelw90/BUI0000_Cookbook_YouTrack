@@ -4,7 +4,7 @@ maintainer_email 'fred.thompson@buildempire.co.uk'
 license          'Apache 2.0'
 description      'TeamCity and YouTrack on one server.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.15'
+version          '0.1.16'
 
 recipe 'cookbook_youtrack', 'YouTrack instance.'
 
