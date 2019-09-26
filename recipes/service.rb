@@ -15,7 +15,7 @@ memory_options = node['cookbook_youtrack']['youtrack']['memory_options']
 install_dir = "#{install_root_dir}/#{youtrack_version}"
 shell_script_path = "#{install_dir}/bin/youtrack.sh"
 
-if node[:teamcity_build_agent][:systemd]
+if node['cookbook_youtrack']['systemd']
   systemd_unit "youtrack.service" do
     enabled true
     active true
