@@ -52,7 +52,7 @@ end
 bash "extract-youtrack" do
   code <<-EOH
     unzip #{youtrack_archive_path} -d #{install_root_dir}
-    mv #{install_dir}/youtrack-#{youtrack_version} #{install_dir}/#{youtrack_version}
+    mv #{install_root_dir}/youtrack-#{youtrack_version} #{install_dir}
   EOH
   action :nothing
 end
